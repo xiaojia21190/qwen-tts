@@ -1,10 +1,31 @@
 [project]
 name = "qwen-tts"
 version = "0.1.0"
-description = "Add your description here"
+description = "通义千问语音合成 API 客户端和服务器"
 readme = "README.md"
 requires-python = ">=3.13"
+authors = [
+    { name = "Your Name", email = "your.email@example.com" }
+]
+keywords = ["tts", "qwen", "speech", "synthesis", "api"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
 dependencies = [
     "fastapi[standard]>=0.128.0",
     "requests>=2.31.0",
 ]
+
+[project.scripts]
+qwen-tts = "main:main"
+qwen-tts-server = "api_server:main"
+
+[project.urls]
+Homepage = "https://github.com/yourusername/qwen-tts"
+Repository = "https://github.com/yourusername/qwen-tts"
+Issues = "https://github.com/yourusername/qwen-tts/issues"

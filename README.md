@@ -18,7 +18,45 @@
 uv sync
 ```
 
-### 2. 方式一：直接调用（Python API）
+### 2. 方式一：Docker 部署（推荐）
+
+#### 使用 Docker Compose
+
+```bash
+# 启动服务
+docker-compose up -d
+
+# 查看日志
+docker-compose logs -f
+
+# 停止服务
+docker-compose down
+```
+
+#### 使用 Docker 命令
+
+```bash
+# 构建镜像
+docker build -t qwen-tts .
+
+# 运行容器
+docker run -d -p 8000:8000 --name qwen-tts qwen-tts
+
+# 查看日志
+docker logs -f qwen-tts
+```
+
+#### 使用 GitHub Container Registry
+
+```bash
+# 拉取镜像
+docker pull ghcr.io/yourusername/qwen-tts:latest
+
+# 运行
+docker run -d -p 8000:8000 ghcr.io/yourusername/qwen-tts:latest
+```
+
+### 3. 方式二：直接调用（Python API）
 
 ```python
 from main import synthesize
@@ -33,7 +71,7 @@ output = synthesize(
 print(f"音频已保存到: {output}")
 ```
 
-### 3. 方式二：启动 API 服务器
+### 4. 方式三：启动 API 服务器
 
 ```bash
 # 启动服务器
@@ -70,7 +108,7 @@ curl -X POST "http://localhost:8000/tts" \
 curl "http://localhost:8000/tts?text=你好&voice=Cherry%20/%20芊悦"
 ```
 
-### 4. 方式三：使用客户端
+### 5. 方式四：使用客户端
 
 ```bash
 # 合成语音
@@ -159,11 +197,17 @@ python client_example.py --list-voices
 
 ```
 qwen-tts/
-├── main.py           # 核心 TTS 客户端
-├── api_server.py     # FastAPI HTTP 服务器
-├── client_example.py # 客户端示例
-├── pyproject.toml    # 项目配置
-└── README.md         # 说明文档
+├── main.py                    # 核心 TTS 客户端
+├── api_server.py              # FastAPI HTTP 服务器
+├── client_example.py          # 客户端示例
+├── pyproject.toml             # 项目配置
+├── README.md                  # 说明文档
+├── Dockerfile                 # Docker 镜像构建
+├── docker-compose.yml         # Docker Compose 配置
+├── .dockerignore              # Docker 忽略文件
+└── .github/
+    └── workflows/
+        └── docker-build.yml   # GitHub Actions CI/CD
 ```
 
 ## 许可证
