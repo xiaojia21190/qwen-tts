@@ -50,10 +50,10 @@ docker logs -f qwen-tts
 
 ```bash
 # 拉取镜像
-docker pull ghcr.io/yourusername/qwen-tts:latest
+docker pull ghcr.io/jiaws/qwen-tts:latest
 
 # 运行
-docker run -d -p 8000:8000 ghcr.io/yourusername/qwen-tts:latest
+docker run -d -p 8000:8000 ghcr.io/jiaws/qwen-tts:latest
 ```
 
 ### 方式一：直接调用（Python API）
