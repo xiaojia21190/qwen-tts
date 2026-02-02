@@ -56,6 +56,27 @@ docker pull ghcr.io/yourusername/qwen-tts:latest
 docker run -d -p 8000:8000 ghcr.io/yourusername/qwen-tts:latest
 ```
 
+#### 使用 Docker Hub
+
+```bash
+# 拉取镜像
+docker pull yourusername/qwen-tts:latest
+
+# 运行
+docker run -d -p 8000:8000 yourusername/qwen-tts:latest
+```
+
+**配置 Docker Hub 自动推送：**
+
+1. 注册 Docker Hub 账号：[https://hub.docker.com](https://hub.docker.com)
+2. 创建 Access Token：
+   - 登录 Docker Hub → Account Settings → Security → New Access Token
+3. 在 GitHub 仓库添加 Secrets：
+   - 进入仓库 → Settings → Secrets and variables → Actions
+   - 添加 `DOCKER_USERNAME`（你的 Docker Hub 用户名）
+   - 添加 `DOCKER_PASSWORD`（你的 Access Token）
+4. 推送代码后，GitHub Actions 会自动推送到 Docker Hub
+
 ### 3. 方式二：直接调用（Python API）
 
 ```python
